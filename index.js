@@ -17,6 +17,11 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true})
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('MongoDB connection error:', error));
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the API! Server is running.');
+});
+
+
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', auth,postRoutes);
 app.use('/api/comments', commentRoutes);
